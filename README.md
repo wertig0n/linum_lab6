@@ -1,10 +1,10 @@
-# Labb 6
+# Lab 6
 
 Lab 6 in "Linux som Utvecklingsmiljö" (linum), group 148
 
 ## License
 
-Standard copyright, e.g. NOT PERMISSIVE
+BSD License
 
 ## How to Git
 
