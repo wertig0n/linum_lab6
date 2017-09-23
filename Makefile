@@ -17,7 +17,7 @@ INCLUDE_DIR=/usr/local/include
 all: lib electrotest
 .PHONY: all
 
-lib: libresistance libpower libcomponent
+lib: build libresistance libpower libcomponent
 
 libresistance:
 
@@ -35,3 +35,6 @@ install:
 
 clean:
 	rm $(BUILD_PATH)/*
+
+build:
+	mkdir -p $@
