@@ -8,6 +8,7 @@ int main() {
 	int count;
 	int c;
 	float array[100];
+	float res[] = { 0.0, 0.0, 0.0 };
 	char conn;
 	int volt;
 
@@ -34,8 +35,16 @@ int main() {
 	printf("Effekt:\n%0.2f W\n", P);
 
 	// Beräkna ersättningsresistanser
-	// int count = e_resistance(resistance, res_array);
-	// printf("Ersättningsresistanser i E12-serien kopplade i serie:\n");
+	count = e_resistance(resistance, res);
+	printf("Ersättningsresistanser i E12-serien kopplade i serie:\n");
+
+	if (count == 0) {
+		printf("Det finns inga resistanser som matchar!\n");
+        }
+
+	for (c=0; c < count; c++) {
+		printf("%f\n", res[c]);
+	}
 
 	return 0;
 }
