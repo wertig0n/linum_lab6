@@ -36,11 +36,11 @@ install:
 
 uninstall:
 	rm $(LIB_DIR)/libcomponent.so
-	rm $(INCLUDE_DIR)/libcomponent.so
+	rm $(INCLUDE_DIR)/libcomponent.h
 	rm $(LIB_DIR)/libresistance.so
 	rm $(INCLUDE_DIR)/libresistance.h
 	rm $(LIB_DIR)/libpower.so
-	rm $(INCLUDE_DIR)/libpower.so
+	rm $(INCLUDE_DIR)/libpower.h
 
 clean:
 	rm $(BUILD_PATH)/*
