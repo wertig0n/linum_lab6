@@ -19,6 +19,7 @@ all: lib electrotest
 lib: build libresistance libpower libcomponent
 
 libresistance:
+	$(CC) $(LIBFLAGS) $(LDFLAGS) $(SRC_PATH)/$@.c -o $(BUILD_PATH)/$@.so
 
 libpower:
 
@@ -35,6 +36,8 @@ install:
 uninstall:
 	rm $(LIB_DIR)/libcomponent.so
 	rm $(INCLUDE_DIR)/libcomponent.so
+	rm $(LIB_DIR)/libresistance.so
+	rm $(INCLUDE_DIR)/libresistance.h
 
 clean:
 	rm $(BUILD_PATH)/*
