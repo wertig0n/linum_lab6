@@ -15,7 +15,6 @@ INCLUDE_DIR=/usr/local/include
 # /usr/local/lib och /usr/local/include respektive
 
 all: lib electrotest
-.PHONY: all
 
 lib: build libresistance libpower libcomponent
 
@@ -24,14 +23,18 @@ libresistance:
 libpower:
 
 libcomponent:
-	$(CC) $(LIBFLAGS) $(LDFLAGS) $(SRC_PATH)/libcomponent.c -o $(BUILD_PATH)/libcomponent.so
+	$(CC) $(LIBFLAGS) $(LDFLAGS) $(SRC_PATH)/$@.c -o $(BUILD_PATH)/$@.so
 
 electrotest:
-	$(CC) $(SRC_PATH)/electrotest.c $(CFLAGS) $(BUILDFLAGS) -o $(BUILD_PATH)/electrotest
+	$(CC) $(SRC_PATH)/$@.c $(CFLAGS) $(BUILDFLAGS) -o $(BUILD_PATH)/$@
 
 install:
 	cp $(BUILD_PATH)/*.so $(LIB_DIR)
 	cp $(INC_PATH)/*.h $(INCLUDE_DIR)
+
+uninstall:
+	rm $(LIB_DIR)/libcomponent.so
+	rm $(INCLUDE_DIR)/libcomponent.so
 
 clean:
 	rm $(BUILD_PATH)/*
