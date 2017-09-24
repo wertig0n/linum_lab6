@@ -22,7 +22,8 @@ libresistance:
 	$(CC) $(LIBFLAGS) $(LDFLAGS) $(SRC_PATH)/$@.c -o $(BUILD_PATH)/$@.so
 
 libpower:
-
+	$(CC) $(LIBFLAGS) $(LDFLAGS) $(SRC_PATH)/$@.c -o $(BUILD_PATH)/$@.so
+	
 libcomponent:
 	$(CC) $(LIBFLAGS) $(LDFLAGS) $(SRC_PATH)/$@.c -o $(BUILD_PATH)/$@.so
 
@@ -38,6 +39,8 @@ uninstall:
 	rm $(INCLUDE_DIR)/libcomponent.so
 	rm $(LIB_DIR)/libresistance.so
 	rm $(INCLUDE_DIR)/libresistance.h
+	rm $(LIB_DIR)/libpower.so
+	rm $(INCLUDE_DIR)/libpower.so
 
 clean:
 	rm $(BUILD_PATH)/*
