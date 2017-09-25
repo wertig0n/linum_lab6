@@ -1,14 +1,15 @@
 INC_PATH=./src
 SRC_PATH=./src
-BUILD_PATH=build
+BUILD_PATH=lib
 CC=gcc
 LIBFLAGS=-fPIC -Wall -Wextra -O2 -g
 CFLAGS=-I$(INC_PATH) -O3
 LDFLAGS=-shared
-BUILDFLAGS=-Lbuild -lresistance -lpower -lcomponent -Wl,-rpath,$(BUILD_PATH)
+BUILDFLAGS=-Llib -lresistance -lpower -lcomponent -Wl,-rpath,$(BUILD_PATH)
 EXECUTABLE=electrotest
 LIB_DIR=/usr/local/lib
 INCLUDE_DIR=/usr/local/include
+INSTALL_DIR=/usr/local/bin
 
 # Lägger alla binärer i ./build
 # installerar biblioteken och headerfiler till
@@ -28,11 +29,12 @@ libcomponent:
 	$(CC) $(LIBFLAGS) $(LDFLAGS) $(SRC_PATH)/$@.c -o $(BUILD_PATH)/$@.so
 
 electrotest:
-	$(CC) $(SRC_PATH)/$@.c $(CFLAGS) $(BUILDFLAGS) -o $(BUILD_PATH)/$@
+	$(CC) $(SRC_PATH)/$@.c $(CFLAGS) $(BUILDFLAGS) -o ./$@
 
 install:
 	cp $(BUILD_PATH)/*.so $(LIB_DIR)
 	cp $(INC_PATH)/*.h $(INCLUDE_DIR)
+	cp ./electrotest $(INSTALL_DIR)
 
 uninstall:
 	rm $(LIB_DIR)/libcomponent.so
@@ -41,9 +43,10 @@ uninstall:
 	rm $(INCLUDE_DIR)/libresistance.h
 	rm $(LIB_DIR)/libpower.so
 	rm $(INCLUDE_DIR)/libpower.h
+	rm $(INSTALL_DIR)/electrotest
 
 clean:
 	rm $(BUILD_PATH)/*
 
 build:
-	mkdir -p $@
+	mkdir -p lib
