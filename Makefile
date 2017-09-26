@@ -15,6 +15,7 @@ INSTALL_DIR=/usr/local/bin
 # Lägger alla binärer i ./lib
 # installerar biblioteken och headerfiler till
 # /usr/local/lib och /usr/local/include respektive
+# installerar electrotest till /usr/local/bin
 
 all: lib electrotest
 
@@ -34,16 +35,16 @@ electrotest:
 
 install:
 	cp $(BUILD_PATH)/*.so $(LIB_DIR)
-#	cp $(INC_PATH)/*.h $(INCLUDE_DIR)
+	cp $(INC_PATH)/*.h $(INCLUDE_DIR)
 	$(CC) $(SRC_PATH)/electrotest.c $(CFLAGS) $(INSTALLFLAGS) -o $(INSTALL_DIR)/electrotest
 
 uninstall:
 	rm $(LIB_DIR)/libcomponent.so
-#	rm $(INCLUDE_DIR)/libcomponent.h
+	rm $(INCLUDE_DIR)/libcomponent.h
 	rm $(LIB_DIR)/libresistance.so
-#	rm $(INCLUDE_DIR)/libresistance.h
+	rm $(INCLUDE_DIR)/libresistance.h
 	rm $(LIB_DIR)/libpower.so
-#	rm $(INCLUDE_DIR)/libpower.h
+	rm $(INCLUDE_DIR)/libpower.h
 	rm $(INSTALL_DIR)/electrotest
 
 clean:
