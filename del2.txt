@@ -2,4 +2,4 @@ De som jobbat på detta projekt är:
 
 * Per Ekström, studerar Civilingenjör Robotik på Mälardalens Högskola
 
-Själva länkningen är dynamisk och utförs först med de lokala filerna. När man installerar programmet läggs först biblioteken på sina rätta platser, och sedan byggs programmet om för att länka mot de installerade biblioteken. 
+Själva länkningen är dynamisk och utförs först med de lokala filerna. När man installerar programmet läggs först biblioteken på sina rätta platser, och sedan byggs programmet om för att länka mot de installerade biblioteken. Detta sker genom två växlar, -L och -Wl. -L anger i vilken katalog som kompilatorn bör titta i för att hitta de kompilerade biblioteken, och med -Wl skickar vi vidare sökvägen till länkaren. Både kompilatorn och länkaren måste känna till var de kompilerade biblioteksfilerna kan lokaliseras.
