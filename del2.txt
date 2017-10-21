@@ -1,0 +1,5 @@
+De som jobbat på detta projekt är:
+
+* Per Ekström, studerar Civilingenjör Robotik på Mälardalens Högskola
+
+Själva länkningen är dynamisk och utförs först med de lokala filerna. När man installerar programmet läggs först biblioteken på sina rätta platser, och sedan byggs programmet om för att länka mot de installerade biblioteken. 
