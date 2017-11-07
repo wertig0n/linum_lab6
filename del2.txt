@@ -2,7 +2,10 @@ De som jobbat på detta projekt är:
 
 * Per Ekström, studerar Civilingenjör Robotik på Mälardalens Högskola
 * Alvine Andersson, frilansande webbutvecklare som vill bli en stjärna på linux
+* Carl-Henrik Wallin, avdelningschef för systemutveckling SSAB i Oxelösund
 
 Själva länkningen är dynamisk och utförs först med de lokala filerna. När man installerar programmet läggs först biblioteken på sina rätta platser, och sedan byggs programmet om för att länka mot de installerade biblioteken. Detta sker genom två växlar, -L och -Wl. -L anger i vilken katalog som kompilatorn bör titta i för att hitta de kompilerade biblioteken, och med -Wl skickar vi vidare sökvägen till länkaren. Både kompilatorn och länkaren måste känna till var de kompilerade biblioteksfilerna kan lokaliseras.
 
 När biblioteken kompileras läggs de genererade biblioteken i mappen "lib". De växlar som används är -shared som genererar ett delat bibliotek, -fPic som gör koden "position independent" så biblioteken kan laddas från olika adresser i det virtuella minnet, -02 som anger optimiseringsnivå 2 för den genererade koden, -Wall och -Wextra som visar eventuella varningsmeddelanden vid kompileringen, samt -g som visar eventuella fel i koden.
+
+För att använda biblioteken i huvudprogrammet behöver vi ange flaggan -I för att tala om var biblioteken ligger någonstans när vi kompilerar huvudprogrammet. Flaggan -03 anger att vi vill optimera koden ytterliggare. När man bygger objektsfilen och länkar ihop huvudprogrammet används följande flaggor, biblioteken som vi skapade ovan ex -lpower. -WL för att skicka med ett alternativ till länkaren, här skickar vi med -rpath. -rpath används för att lägga till sökvägen för vårt bibliotek så att man kan komma åt det under körning.
